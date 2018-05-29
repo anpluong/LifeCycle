@@ -44,11 +44,19 @@ class Content extends Component {
         // it returns an object to update the state which will update to DOM. 
         return {num: props.myNumber1}
     }   
+    
+    // This will not be called on the initial render. 
+    // this method will be called before the render method and will define if
+    // a re-rendering is needed or can be skipped based on the boolean value it returns. 
+    // the newProps will still be {myNumber1: 1} the props passed from the parents
+    // newProps.myNumber
 
     shouldComponentUpdate(newProps, newState) {
         console.log("this is shouldComponentUpdate ") 
-        console.log(newProps, newProps.myNumber1 <= 10)
-         return newProps.myNumber1 <= 10;
+        console.log(newProps, newProps.myNumber1 <= 3)
+        // new state refers to the state of this component
+        console.log("new State", newState)
+         return newProps.myNumber1 <= 3;
       }
       
     render() {
