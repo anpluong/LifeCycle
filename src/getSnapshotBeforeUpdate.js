@@ -49,9 +49,22 @@ class Content extends Component {
 
     shouldComponentUpdate(newProps, newState) {
         console.log("this is shouldComponentUpdate ") 
-        console.log(newProps, newProps.myNumber1 <= 10)
-         return newProps.myNumber1 <= 10;
+        console.log(newProps, newProps.myNumber1 <= 3)
+         return newProps.myNumber1 <= 3;
       }
+
+    // this method is not called on initial render. This will get what the previous state and 
+    // this current props returned from getDerivedStateFromProps.
+    // 
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        console.log("prevProp ", prevProps);
+        console.log("prevState ", prevState);
+
+        // the value it returns will be passed as the third snapshot parameter
+        // to componentDidUpdate. 
+        return null;
+      }
+
       
     render() {
         return (
